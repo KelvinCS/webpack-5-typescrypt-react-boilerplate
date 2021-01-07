@@ -1,15 +1,14 @@
-/**
- * Created by: Matheus Benites (benites.amorim@gmail.com)
- */
-import React, { Suspense } from 'react';
+import React from 'react';
+import { Provider } from 'react-redux';
+import { combineReducers, createStore } from 'redux';
+import todoReducer from './features/todo/presentation/redux/todo-reducer';
 
-import * as S from './styled';
+const store = createStore(combineReducers({
+    todo: todoReducer
+}));
 
 export const App = (): React.ReactElement => (
-    <S.Wrapper>
-        <S.TextWrapper>It works</S.TextWrapper>
-        <Suspense fallback={'loading...'}>
-            <S.ImageWrapper />
-        </Suspense>
-    </S.Wrapper>
+    <Provider store={store}>
+
+    </Provider>
 );
