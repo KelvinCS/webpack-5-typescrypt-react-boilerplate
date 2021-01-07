@@ -5,6 +5,7 @@ import { watchGetAllTodos } from './features/todo/presentation/redux/todo-saga';
 import createSagaMiddleware from 'redux-saga';
 import todoReducer from './features/todo/presentation/redux/todo-reducer';
 import TodoPage from './features/todo/presentation/pages/todo-page';
+import { ThemeProvider, RockUITheme, CSSReset } from '@rockr/rock-ui';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -19,6 +20,9 @@ sagaMiddleware.run(watchGetAllTodos);
 
 export const App = (): React.ReactElement => (
     <Provider store={store}>
-        <TodoPage />
+        <ThemeProvider theme={RockUITheme}>
+            <CSSReset />
+            <TodoPage />
+        </ThemeProvider>
     </Provider>
 );
